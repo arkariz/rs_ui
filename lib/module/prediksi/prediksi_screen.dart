@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:rs_ui/helper/size_config.dart';
+import 'package:rs_ui/module/prediksi/prediksi_controller.dart';
 import 'package:rs_ui/widget/custom_text.dart';
 import 'package:rs_ui/widget/custom_text_field.dart';
 
-class PrediksiScreen extends GetView {
+class PrediksiScreen extends GetView<PrediksiController> {
   const PrediksiScreen({super.key});
 
   @override
@@ -45,6 +46,12 @@ class PrediksiScreen extends GetView {
                     ),
                     const SizedBox(height: 30),
                     specialForm(),
+                    ElevatedButton(
+                      onPressed: () {
+                        controller.prediksi();
+                      },
+                      child: Text("Prediksi"),
+                    )
                   ],
                 ),
               ),
@@ -63,23 +70,23 @@ class PrediksiScreen extends GetView {
           CustomTextField(
             label: "Diagnosis Primer",
             hint: "Masukkan kode diagnosis primer",
-            controller: TextEditingController(),
+            controller: controller.diagnosisPrimerController,
           ),
           const SizedBox(height: 20),
           CustomTextField(
             label: "Diagnosis Sekunder",
             hint: "Masukkan kode diagnosis sekunder 1 (Opsional)",
-            controller: TextEditingController(),
+            controller: controller.diagnosisSekunder1Controller,
           ),
           const SizedBox(height: 15),
           CustomTextField(
             hint: "Masukkan kode diagnosis sekunder 2 (Opsional)",
-            controller: TextEditingController(),
+            controller: controller.diagnosisSekunder2Controller,
           ),
           const SizedBox(height: 15),
           CustomTextField(
             hint: "Masukkan kode diagnosis sekunder 3 (Opsional)",
-            controller: TextEditingController(),
+            controller: controller.diagnosisSekunder3Controller,
           ),
         ],
       ),
@@ -94,23 +101,23 @@ class PrediksiScreen extends GetView {
           CustomTextField(
             label: "Tindakan Primer",
             hint: "Masukkan kode tindakan primer",
-            controller: TextEditingController(),
+            controller: controller.tindakanPrimerController,
           ),
           const SizedBox(height: 20),
           CustomTextField(
             label: "Tindakan Sekunder",
             hint: "Masukkan kode tindakan sekunder 1 (Opsional)",
-            controller: TextEditingController(),
+            controller: controller.tindakanSekunder1Controller,
           ),
           const SizedBox(height: 15),
           CustomTextField(
             hint: "Masukkan kode tindakan sekunder 2 (Opsional)",
-            controller: TextEditingController(),
+            controller: controller.tindakanSekunder2Controller,
           ),
           const SizedBox(height: 15),
           CustomTextField(
             hint: "Masukkan kode tindakan sekunder 3 (Opsional)",
-            controller: TextEditingController(),
+            controller: controller.tindakanSekunder3Controller,
           ),
         ],
       ),
@@ -123,37 +130,37 @@ class PrediksiScreen extends GetView {
         CustomTextField(
           label: "Subacute",
           hint: "Masukkan kode subacute (Opsional)",
-          controller: TextEditingController(),
+          controller: controller.subacuteController,
         ),
         const SizedBox(height: 20),
         CustomTextField(
           label: "Chronic",
           hint: "Masukkan kode chronic (Opsional)",
-          controller: TextEditingController(),
+          controller: controller.chronicController,
         ),
         const SizedBox(height: 15),
         CustomTextField(
           label: "Special Procedure",
           hint: "Masukkan kode special procedure (Opsional)",
-          controller: TextEditingController(),
+          controller: controller.spController,
         ),
         const SizedBox(height: 15),
         CustomTextField(
           label: "Special Drug",
           hint: "Masukkan kode special drug (Opsional)",
-          controller: TextEditingController(),
+          controller: controller.sdController,
         ),
         const SizedBox(height: 15),
         CustomTextField(
           label: "Special investigation",
           hint: "Masukkan kode special Investigation (Opsional)",
-          controller: TextEditingController(),
+          controller: controller.siController,
         ),
         const SizedBox(height: 15),
         CustomTextField(
           label: "Special Prothesis",
           hint: "Masukkan kode special prothesis (Opsional)",
-          controller: TextEditingController(),
+          controller: controller.srController,
         ),
       ],
     );

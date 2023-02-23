@@ -38,6 +38,9 @@ class CustomTextField extends StatelessWidget {
               ),
             ),
           ),
+          onChanged: (value) {
+            controller.text = value;
+          },
         )
       ],
     );
