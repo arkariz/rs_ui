@@ -16,6 +16,6 @@ class PrediksiRepository {
     );
     print(response.statusCode);
     print(response.body);
-    return prediksiFromJson(response.body);
+    return Prediksi.fromJson(response.body);
   }
 }

@@ -46,11 +46,16 @@ class PrediksiScreen extends GetView<PrediksiController> {
                     ),
                     const SizedBox(height: 30),
                     specialForm(),
-                    ElevatedButton(
-                      onPressed: () {
-                        controller.prediksi();
-                      },
-                      child: Text("Prediksi"),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 45,
+                      width: 300,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          controller.prediksi();
+                        },
+                        child: Text("Prediksi"),
+                      ),
                     )
                   ],
                 ),
@@ -100,7 +105,7 @@ class PrediksiScreen extends GetView<PrediksiController> {
         children: [
           CustomTextField(
             label: "Tindakan Primer",
-            hint: "Masukkan kode tindakan primer",
+            hint: "Masukkan kode tindakan primer (Opsional)",
             controller: controller.tindakanPrimerController,
           ),
           const SizedBox(height: 20),
