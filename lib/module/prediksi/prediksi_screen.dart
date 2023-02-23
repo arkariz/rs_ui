@@ -36,10 +36,15 @@ class PrediksiScreen extends GetView {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    CustomTextField(
-                      label: "Diagnosis Primer",
-                      controller: TextEditingController(),
-                    )
+                    Row(
+                      children: [
+                        diagnosisForm(),
+                        const SizedBox(width: 30),
+                        tindakanForm(),
+                      ],
+                    ),
+                    const SizedBox(height: 30),
+                    specialForm(),
                   ],
                 ),
               ),
@@ -47,6 +52,110 @@ class PrediksiScreen extends GetView {
           ],
         ),
       ),
+    );
+  }
+
+  Flexible diagnosisForm() {
+    return Flexible(
+      flex: 1,
+      child: Column(
+        children: [
+          CustomTextField(
+            label: "Diagnosis Primer",
+            hint: "Masukkan kode diagnosis primer",
+            controller: TextEditingController(),
+          ),
+          const SizedBox(height: 20),
+          CustomTextField(
+            label: "Diagnosis Sekunder",
+            hint: "Masukkan kode diagnosis sekunder 1 (Opsional)",
+            controller: TextEditingController(),
+          ),
+          const SizedBox(height: 15),
+          CustomTextField(
+            hint: "Masukkan kode diagnosis sekunder 2 (Opsional)",
+            controller: TextEditingController(),
+          ),
+          const SizedBox(height: 15),
+          CustomTextField(
+            hint: "Masukkan kode diagnosis sekunder 3 (Opsional)",
+            controller: TextEditingController(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Flexible tindakanForm() {
+    return Flexible(
+      flex: 1,
+      child: Column(
+        children: [
+          CustomTextField(
+            label: "Tindakan Primer",
+            hint: "Masukkan kode tindakan primer",
+            controller: TextEditingController(),
+          ),
+          const SizedBox(height: 20),
+          CustomTextField(
+            label: "Tindakan Sekunder",
+            hint: "Masukkan kode tindakan sekunder 1 (Opsional)",
+            controller: TextEditingController(),
+          ),
+          const SizedBox(height: 15),
+          CustomTextField(
+            hint: "Masukkan kode tindakan sekunder 2 (Opsional)",
+            controller: TextEditingController(),
+          ),
+          const SizedBox(height: 15),
+          CustomTextField(
+            hint: "Masukkan kode tindakan sekunder 3 (Opsional)",
+            controller: TextEditingController(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget specialForm() {
+    return Column(
+      children: [
+        CustomTextField(
+          label: "Subacute",
+          hint: "Masukkan kode subacute (Opsional)",
+          controller: TextEditingController(),
+        ),
+        const SizedBox(height: 20),
+        CustomTextField(
+          label: "Chronic",
+          hint: "Masukkan kode chronic (Opsional)",
+          controller: TextEditingController(),
+        ),
+        const SizedBox(height: 15),
+        CustomTextField(
+          label: "Special Procedure",
+          hint: "Masukkan kode special procedure (Opsional)",
+          controller: TextEditingController(),
+        ),
+        const SizedBox(height: 15),
+        CustomTextField(
+          label: "Special Drug",
+          hint: "Masukkan kode special drug (Opsional)",
+          controller: TextEditingController(),
+        ),
+        const SizedBox(height: 15),
+        CustomTextField(
+          label: "Special investigation",
+          hint: "Masukkan kode special Investigation (Opsional)",
+          controller: TextEditingController(),
+        ),
+        const SizedBox(height: 15),
+        CustomTextField(
+          label: "Special Prothesis",
+          hint: "Masukkan kode special prothesis (Opsional)",
+          controller: TextEditingController(),
+        ),
+      ],
     );
   }
 }

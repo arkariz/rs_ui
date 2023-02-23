@@ -27,7 +27,7 @@ class SideMenu extends GetView<SideMenuController> {
   Widget screen() {
     return Obx(
       () => Flexible(
-        flex: 6,
+        flex: 5,
         child: controller.currentScreen.value == Screen.prediksi
             ? const PrediksiScreen()
             : const InputDataScreen(),
@@ -58,23 +58,25 @@ class SideMenu extends GetView<SideMenuController> {
                   children: const [
                     Icon(
                       Icons.local_hospital,
+                      size: 30,
                       color: Colors.blue,
                     ),
                     Text(
                       "Health Care",
                       style: TextStyle(
-                        fontSize: 24,
+                        fontSize: 30,
                         color: Colors.blue,
                       ),
                     )
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 sideMenuItem(
                   Icons.switch_access_shortcut_add_outlined,
                   "Prediksi",
                   Screen.prediksi,
                 ),
+                const SizedBox(height: 10),
                 sideMenuItem(
                   Icons.input,
                   "Input Data",
@@ -98,14 +100,14 @@ class SideMenu extends GetView<SideMenuController> {
           children: [
             Icon(
               icon,
-              size: 14,
+              size: 18,
               color: isActive ? Colors.blue : Colors.grey,
             ),
             const SizedBox(width: 7),
             Text(
               title,
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 18,
                 color: isActive ? Colors.blue : Colors.grey,
               ),
             ),
