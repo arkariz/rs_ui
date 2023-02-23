@@ -3,8 +3,13 @@ import 'package:get/route_manager.dart';
 import 'package:rs_ui/module/side_menu/side_menu.dart';
 import 'package:rs_ui/routes/app_pages.dart';
 import 'package:rs_ui/routes/app_routes.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await windowManager.ensureInitialized();
+  windowManager.setFullScreen(true);
+  
   runApp(const MyApp());
 }
 
