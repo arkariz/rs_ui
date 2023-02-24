@@ -4,6 +4,7 @@ import 'package:rs_ui/helper/size_config.dart';
 import 'package:rs_ui/module/input_data/input_data_screen.dart';
 import 'package:rs_ui/module/prediksi/prediksi_screen.dart';
 import 'package:rs_ui/module/side_menu/side_menu_controller.dart';
+import 'package:rs_ui/widget/loading/base_widget.dart';
 
 class SideMenu extends GetView<SideMenuController> {
   const SideMenu({super.key});
@@ -11,14 +12,16 @@ class SideMenu extends GetView<SideMenuController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        height: SizeConfig(context).getHeight(),
-        width: SizeConfig(context).getWidth(),
-        child: Row(
-          children: [
-            sideMenuWidget(),
-            screen(),
-          ],
+      body: BaseWidget(
+        child: SizedBox(
+          height: SizeConfig(context).getHeight(),
+          width: SizeConfig(context).getWidth(),
+          child: Row(
+            children: [
+              sideMenuWidget(),
+              screen(),
+            ],
+          ),
         ),
       ),
     );

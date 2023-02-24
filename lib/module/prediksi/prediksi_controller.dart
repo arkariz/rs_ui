@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rs_ui/module/prediksi/prediksi_repository.dart';
+import 'package:rs_ui/widget/loading/loading_controller.dart';
 
 class PrediksiController extends GetxController {
   final diagnosisPrimerController = TextEditingController();
@@ -20,16 +21,19 @@ class PrediksiController extends GetxController {
 
   final hasilPrediksi = "".obs;
   final jumlah = "".obs;
+  final isLoading = false.obs;
 
   final repo = PrediksiRepository();
+  final loading = Get.find<LoadingController>();
 
   prediksi() async {
+    loading.isLoading = true;
     final body = createRequestBody();
     final result = await repo.getPrediksi(body);
     hasilPrediksi(result.data.prediksi);
     jumlah(result.data.jumlah);
-    print(hasilPrediksi.value);
-    print(jumlah.value);
+    loading.isLoading = false;
+    showDialog();
   }
 
   createRequestBody() {
@@ -69,5 +73,17 @@ class PrediksiController extends GetxController {
     };
 
     return request;
+  }
+
+  showDialog() {
+    Get.defaultDialog(
+      title: "Hasil Prediksi",
+      content: Column(
+        children: [
+          Text("data"),
+          Text("data"),
+        ],
+      ),
+    );
   }
 }
