@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rs_ui/module/prediksi/prediksi_repository.dart';
+import 'package:rs_ui/widget/currency_formatter.dart';
+import 'package:rs_ui/widget/custom_text.dart';
 import 'package:rs_ui/widget/loading/loading_controller.dart';
 
 class PrediksiController extends GetxController {
@@ -21,6 +23,8 @@ class PrediksiController extends GetxController {
 
   final hasilPrediksi = "".obs;
   final jumlah = "".obs;
+  final tarifRs = "".obs;
+  final tarifInacbg = "".obs;
   final isLoading = false.obs;
 
   final repo = PrediksiRepository();
@@ -30,10 +34,15 @@ class PrediksiController extends GetxController {
     loading.isLoading = true;
     final body = createRequestBody();
     final result = await repo.getPrediksi(body);
-    hasilPrediksi(result.data.prediksi);
-    jumlah(result.data.jumlah);
+    if (result != null) {
+      hasilPrediksi(result.data.prediksi);
+      jumlah.value = CurrencyFormatter.toIdr(result.data.jumlah);
+      tarifRs.value = CurrencyFormatter.toIdr(result.data.tarifRs);
+      tarifInacbg.value = CurrencyFormatter.toIdr(result.data.tarifInacbg);
+      loading.isLoading = false;
+      showDialog();
+    }
     loading.isLoading = false;
-    showDialog();
   }
 
   createRequestBody() {
@@ -56,20 +65,21 @@ class PrediksiController extends GetxController {
             : tindakanPrimerController.text,
         tindakanSekunder1Controller.text.isEmpty
             ? "-"
-            : tindakanSekunder1Controller,
+            : tindakanSekunder1Controller.text,
         tindakanSekunder2Controller.text.isEmpty
             ? "-"
-            : tindakanSekunder2Controller,
+            : tindakanSekunder2Controller.text,
         tindakanSekunder3Controller.text.isEmpty
             ? "-"
-            : tindakanSekunder3Controller,
+            : tindakanSekunder3Controller.text,
       ],
-      "subacute": "string",
-      "chronic": "string",
-      "sp": "string",
-      "sr": "string",
-      "si": "string",
-      "sd": "string"
+      "subacute":
+          subacuteController.text.isEmpty ? "-" : subacuteController.text,
+      "chronic": chronicController.text.isEmpty ? "-" : chronicController.text,
+      "sp": spController.text.isEmpty ? "-" : spController.text,
+      "sr": srController.text.isEmpty ? "-" : srController.text,
+      "si": siController.text.isEmpty ? "-" : siController.text,
+      "sd": sdController.text.isEmpty ? "-" : sdController.text,
     };
 
     return request;
@@ -78,11 +88,43 @@ class PrediksiController extends GetxController {
   showDialog() {
     Get.defaultDialog(
       title: "Hasil Prediksi",
+      titlePadding: const EdgeInsets.only(top: 24),
+      contentPadding: const EdgeInsets.all(24),
       content: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("data"),
-          Text("data"),
+          h4(text: hasilPrediksi.value.capitalizeFirst!),
+          Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  h5(text: "Rata-rata tarif rumah sakit"),
+                  h5(text: "Tarif INA-CBG"),
+                  h5(text: "Total ke${hasilPrediksi.value.toLowerCase()}an"),
+                ],
+              ),
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  h5(text: tarifRs.value),
+                  h5(text: tarifInacbg.value),
+                  h5(text: jumlah.value),
+                ],
+              )
+            ],
+          ),
         ],
+      ),
+      confirm: SizedBox(
+        width: 250,
+        child: ElevatedButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: Text("Ok"),
+        ),
       ),
     );
   }

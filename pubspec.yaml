@@ -40,6 +40,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.5
   loading_animation_widget: ^1.2.0+4
+  money_formatter: ^0.0.4
+  another_flushbar: ^1.12.29
 
 dev_dependencies:
   flutter_test:
