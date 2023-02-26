@@ -16,10 +16,20 @@ class SideMenu extends GetView<SideMenuController> {
         child: SizedBox(
           height: SizeConfig(context).getHeight(),
           width: SizeConfig(context).getWidth(),
-          child: Row(
+          child: Stack(
             children: [
-              sideMenuWidget(),
-              screen(),
+              Row(
+                children: [
+                  sideMenuWidget(),
+                  screen(),
+                ],
+              ),
+              Row(
+                children: [
+                  sideMenuWidget(),
+                  const Flexible(flex: 5, child: SizedBox())
+                ],
+              )
             ],
           ),
         ),
