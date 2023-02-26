@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:rs_ui/widget/custom_text.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -9,12 +10,14 @@ class CustomTextField extends StatelessWidget {
     this.inputType = TextInputType.text,
     required this.hint,
     required this.controller,
+    this.customValidator,
   });
 
   final String? label;
   final TextInputType inputType;
   final String hint;
   final TextEditingController controller;
+  final bool? customValidator;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,25 @@ class CustomTextField extends StatelessWidget {
                 color: Colors.grey.shade300,
               ),
             ),
+            errorBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderSide: BorderSide(
+                width: 1,
+                color: Colors.red.shade300,
+              ),
+            ),
           ),
+          validator: ((value) {
+            if (customValidator != null) {
+              if (value!.isEmpty || value == null) {
+                return "Kolom tidak boleh kosong";
+              } else {
+                return null;
+              }
+            } else {
+              return null;
+            }
+          }),
           onChanged: (value) {
             controller.text = value;
           },
