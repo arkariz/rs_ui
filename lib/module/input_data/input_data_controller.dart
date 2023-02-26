@@ -47,19 +47,23 @@ class InputDataController extends GetxController {
   final tarifObatKronisController = TextEditingController();
   final tarifObatKemoController = TextEditingController();
 
+  final keyForm = GlobalKey<FormState>();
+
   final repo = InputDataRepository();
   final loading = Get.find<LoadingController>();
 
   final genderList = ["Laki-laki", "Perempuan"];
 
   prediksi() async {
-    loading.isLoading = true;
-    final body = createRequestBody();
-    final result = await repo.inputData(body);
-    if (result != null) {
-      showDialog(result);
+    if (keyForm.currentState!.validate()) {
+      loading.isLoading = true;
+      final body = createRequestBody();
+      final result = await repo.inputData(body);
+      if (result != null) {
+        showDialog(result);
+      }
+      loading.isLoading = false;
     }
-    loading.isLoading = false;
   }
 
   onSelectedGender(String gender) {

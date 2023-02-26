@@ -37,41 +37,44 @@ class InputDataScreen extends GetView<InputDataController> {
                 ],
               ),
               child: SingleChildScrollView(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    biodataForm(size),
-                    const SizedBox(height: 15),
-                    Row(
-                      children: [
-                        diagnosisForm(),
-                        const SizedBox(width: 30),
-                        tindakanForm(),
-                      ],
-                    ),
-                    const SizedBox(height: 30),
-                    specialForm(),
-                    const SizedBox(height: 30),
-                    h2(text: "Tarif"),
-                    const SizedBox(height: 20),
-                    tarifForm(),
-                    const SizedBox(height: 30),
-                    SizedBox(
-                      width: SizeConfig(context).getWidth(),
-                      child: Center(
-                        child: SizedBox(
-                          height: 45,
-                          width: 300,
-                          child: ElevatedButton(
-                            onPressed: () {
-                              controller.prediksi();
-                            },
-                            child: Text("Submit"),
+                child: Form(
+                  key: controller.keyForm,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      biodataForm(size),
+                      const SizedBox(height: 15),
+                      Row(
+                        children: [
+                          diagnosisForm(),
+                          const SizedBox(width: 30),
+                          tindakanForm(),
+                        ],
+                      ),
+                      const SizedBox(height: 30),
+                      specialForm(),
+                      const SizedBox(height: 30),
+                      h2(text: "Tarif"),
+                      const SizedBox(height: 20),
+                      tarifForm(),
+                      const SizedBox(height: 30),
+                      SizedBox(
+                        width: SizeConfig(context).getWidth(),
+                        child: Center(
+                          child: SizedBox(
+                            height: 45,
+                            width: 300,
+                            child: ElevatedButton(
+                              onPressed: () {
+                                controller.prediksi();
+                              },
+                              child: Text("Submit"),
+                            ),
                           ),
                         ),
-                      ),
-                    )
-                  ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             )
@@ -89,6 +92,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan nomor KTP",
           inputType: TextInputType.number,
           controller: controller.ktpController,
+          customValidator: true,
         ),
         const SizedBox(height: 20),
         CustomTextField(
@@ -96,6 +100,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan kelas rawat",
           inputType: TextInputType.number,
           controller: controller.kelasRawatController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomDropdown(
@@ -111,6 +116,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan jumlah hari lama dirawat",
           inputType: TextInputType.number,
           controller: controller.lamaDirawatController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -118,12 +124,14 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan umur",
           inputType: TextInputType.number,
           controller: controller.umurController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
           label: "Code INACBG",
           hint: "Masukkan code INACBG",
           controller: controller.codeInacbgController,
+          customValidator: true,
         ),
       ],
     );
@@ -137,6 +145,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan Tarif INACBG",
           inputType: TextInputType.number,
           controller: controller.tarifInacbgController,
+          customValidator: true,
         ),
         const SizedBox(height: 20),
         CustomTextField(
@@ -144,6 +153,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif rumah sakit",
           inputType: TextInputType.number,
           controller: controller.tarifRsController,
+          customValidator: true,
         ),
         const SizedBox(height: 20),
         CustomTextField(
@@ -151,6 +161,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif prosedur non bedah",
           inputType: TextInputType.number,
           controller: controller.tarifNonbedahController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -158,6 +169,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif prosedur bedah",
           inputType: TextInputType.number,
           controller: controller.tarifBedahController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -165,6 +177,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif konsultasi",
           inputType: TextInputType.number,
           controller: controller.tarifKonsultasiController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -172,6 +185,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif tenaga ahli",
           inputType: TextInputType.number,
           controller: controller.tarifTenagaAhliController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -179,6 +193,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif keperawatan",
           inputType: TextInputType.number,
           controller: controller.tarifKeperawatanController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -186,6 +201,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif penunjang",
           inputType: TextInputType.number,
           controller: controller.tarifPenunjangController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -193,6 +209,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif radiologi",
           inputType: TextInputType.number,
           controller: controller.tarifRadiologiController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -200,6 +217,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif laboratorium",
           inputType: TextInputType.number,
           controller: controller.tarifLabController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -207,6 +225,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif pelayanan darah",
           inputType: TextInputType.number,
           controller: controller.tarifDarahController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -214,6 +233,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif rehabilitasi",
           inputType: TextInputType.number,
           controller: controller.tarifRehabController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -221,6 +241,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif kamar akomodasi",
           inputType: TextInputType.number,
           controller: controller.tarifKamarAkomodasiController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -228,6 +249,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif rawat intensif",
           inputType: TextInputType.number,
           controller: controller.tarifRawatIntensifController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -235,6 +257,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif obat",
           inputType: TextInputType.number,
           controller: controller.tarifObatController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -242,6 +265,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif alkes",
           inputType: TextInputType.number,
           controller: controller.tarifAlkesController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -249,6 +273,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif BMHP",
           inputType: TextInputType.number,
           controller: controller.tarifBMHPController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -256,6 +281,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif sewa alat",
           inputType: TextInputType.number,
           controller: controller.tarifSewaAlatController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -263,6 +289,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif obat kronis",
           inputType: TextInputType.number,
           controller: controller.tarifObatKronisController,
+          customValidator: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -270,6 +297,7 @@ class InputDataScreen extends GetView<InputDataController> {
           hint: "Masukkan tarif obat kemo",
           inputType: TextInputType.number,
           controller: controller.tarifObatKemoController,
+          customValidator: true,
         ),
       ],
     );
@@ -284,6 +312,7 @@ class InputDataScreen extends GetView<InputDataController> {
             label: "Diagnosis Primer",
             hint: "Masukkan kode diagnosis primer",
             controller: controller.diagnosisPrimerController,
+            customValidator: true,
           ),
           const SizedBox(height: 20),
           CustomTextField(
