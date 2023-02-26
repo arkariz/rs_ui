@@ -50,6 +50,8 @@ class InputDataController extends GetxController {
   final repo = InputDataRepository();
   final loading = Get.find<LoadingController>();
 
+  final genderList = ["Laki-laki", "Perempuan"];
+
   prediksi() async {
     loading.isLoading = true;
     final body = createRequestBody();
@@ -58,6 +60,14 @@ class InputDataController extends GetxController {
       showDialog(result);
     }
     loading.isLoading = false;
+  }
+
+  onSelectedGender(String gender) {
+    if (gender == "Laki-kai") {
+      kelaminController.text = "1";
+    } else {
+      kelaminController.text = "2";
+    }
   }
 
   String createDiagnosisCode() {
