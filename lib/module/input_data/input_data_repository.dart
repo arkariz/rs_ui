@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rs_ui/widget/snackbar_util.dart';
 
 class InputDataRepository {
@@ -13,9 +14,16 @@ class InputDataRepository {
     if (response.isOk) {
       return "Input data berhasil";
     } else {
-      SnackBarUtil.showFlushBarError(
-          Get.context!, "Terjadi kesalahan pada sistem");
-      return null;
+      bool result = await InternetConnectionChecker().hasConnection;
+      if (result == true) {
+        SnackBarUtil.showFlushBarError(
+            Get.context!, "Terjadi kesalahan pada sistem");
+        return null;
+      } else {
+        SnackBarUtil.showFlushBarError(
+            Get.context!, "Tidak ada koneksi internet");
+        return null;
+      }
     }
   }
 }
