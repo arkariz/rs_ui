@@ -7,9 +7,9 @@ class InputDataRepository {
 
   Future<String?> inputData(Map<String, dynamic> body) async {
     final response = await _connect.post(
-      "https://rs_api-1-t4657994.deta.app/input-data",
+      "http://127.0.0.1:8000/input-data", //https://rs_api-1-t4657994.deta.app/input-data",
       body,
-      headers: {"X-Space-App-Key": "U2WB4N67kkUGP3bnLvxYze9zbeDGGbNv"},
+      //headers: {"X-Space-App-Key": "U2WB4N67kkUGP3bnLvxYze9zbeDGGbNv"},
     );
     if (response.isOk) {
       return "Input data berhasil";
