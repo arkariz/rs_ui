@@ -4,6 +4,7 @@ import 'package:rs_ui/module/prediksi/prediksi_repository.dart';
 import 'package:rs_ui/widget/currency_formatter.dart';
 import 'package:rs_ui/widget/custom_text.dart';
 import 'package:rs_ui/widget/loading/loading_controller.dart';
+import 'package:rs_ui/widget/snackbar_util.dart';
 
 class PrediksiController extends GetxController {
   final diagnosisPrimerController = TextEditingController();
@@ -33,7 +34,11 @@ class PrediksiController extends GetxController {
   prediksi() async {
     loading.isLoading = true;
     final body = createRequestBody();
-    final result = await repo.getPrediksi(body);
+    final result = await repo.getPrediksi(body).catchError((onError) {
+      loading.isLoading = false;
+      SnackBarUtil.showFlushBarError(
+          Get.context!, "Terjadi kesalahan pada sistem");
+    });
     if (result != null) {
       hasilPrediksi(result.data.prediksi);
       jumlah.value = CurrencyFormatter.toIdr(result.data.jumlah);

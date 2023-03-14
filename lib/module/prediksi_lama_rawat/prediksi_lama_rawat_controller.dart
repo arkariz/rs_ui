@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rs_ui/module/prediksi_lama_rawat/prediksi_lama_rawat_repository.dart';
 import 'package:rs_ui/widget/custom_text.dart';
 import 'package:rs_ui/widget/loading/loading_controller.dart';
+import 'package:rs_ui/widget/snackbar_util.dart';
 
 class PrediksiLamaRawatController extends GetxController {
   final diagnosisPrimerController = TextEditingController();
@@ -27,7 +28,13 @@ class PrediksiLamaRawatController extends GetxController {
     if (keyForm.currentState!.validate()) {
       loading.isLoading = true;
       final body = createRequestBody();
-      final result = await repo.getPrediksiLamaRawat(body);
+      final result =
+          await repo.getPrediksiLamaRawat(body).catchError((onError) {
+        loading.isLoading = false;
+        SnackBarUtil.showFlushBarError(
+            Get.context!, "Terjadi kesalahan pada sistem");
+      });
+
       if (result != null) {
         hasilPrediksi(result);
         loading.isLoading = false;
