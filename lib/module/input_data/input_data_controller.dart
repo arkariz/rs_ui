@@ -4,6 +4,7 @@ import 'package:rs_ui/module/input_data/input_data_repository.dart';
 import 'package:rs_ui/module/prediksi/prediksi_repository.dart';
 import 'package:rs_ui/widget/custom_text.dart';
 import 'package:rs_ui/widget/loading/loading_controller.dart';
+import 'package:rs_ui/widget/snackbar_util.dart';
 
 class InputDataController extends GetxController {
   final ktpController = TextEditingController();
@@ -58,7 +59,11 @@ class InputDataController extends GetxController {
     if (keyForm.currentState!.validate()) {
       loading.isLoading = true;
       final body = createRequestBody();
-      final result = await repo.inputData(body);
+      final result = await repo.inputData(body).catchError((onError) {
+        loading.isLoading = false;
+        SnackBarUtil.showFlushBarError(
+            Get.context!, "Terjadi kesalahan pada sistem");
+      });
       if (result != null) {
         showDialog(result);
       }
