@@ -7,7 +7,7 @@ class PrediksiLamaRawatRepository {
 
   Future<String?> getPrediksiLamaRawat(Map<String, dynamic> body) async {
     final response = await _connect.post(
-      "http://127.0.0.1:8000/prediksi-lama-rawat", //"https://rs_api-1-t4657994.deta.app/prediksi",
+      "http://localhost:8080/prediksi-lama-rawat", //"https://rs_api-1-t4657994.deta.app/prediksi",
       body,
       //headers: {"X-Space-App-Key": "U2WB4N67kkUGP3bnLvxYze9zbeDGGbNv"},
     );
