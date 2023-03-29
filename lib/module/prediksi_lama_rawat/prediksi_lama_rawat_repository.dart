@@ -14,15 +14,8 @@ class PrediksiLamaRawatRepository {
     if (response.isOk) {
       return response.body['data']['prediksi'].toString();
     } else {
-      bool result = await InternetConnectionChecker().hasConnection;
-      if (result == true) {
-        SnackBarUtil.showFlushBarError(Get.context!, response.body['detail']);
-        return null;
-      } else {
-        SnackBarUtil.showFlushBarError(
-            Get.context!, "Tidak ada koneksi internet");
-        return null;
-      }
+      SnackBarUtil.showFlushBarError(Get.context!, response.body['detail']);
+      return null;
     }
   }
 }

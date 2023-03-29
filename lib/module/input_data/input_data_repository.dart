@@ -14,16 +14,9 @@ class InputDataRepository {
     if (response.isOk) {
       return "Input data berhasil";
     } else {
-      bool result = await InternetConnectionChecker().hasConnection;
-      if (result == true) {
-        SnackBarUtil.showFlushBarError(
-            Get.context!, "Terjadi kesalahan pada sistem");
-        return null;
-      } else {
-        SnackBarUtil.showFlushBarError(
-            Get.context!, "Tidak ada koneksi internet");
-        return null;
-      }
+      SnackBarUtil.showFlushBarError(
+          Get.context!, "Terjadi kesalahan pada sistem");
+      return null;
     }
   }
 }
