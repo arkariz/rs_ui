@@ -3,7 +3,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:rs_ui/widget/snackbar_util.dart';
 
 class InputDataRepository {
-  final _connect = GetConnect();
+  final _connect = GetConnect(timeout: const Duration(seconds: 30));
 
   Future<String?> inputData(Map<String, dynamic> body) async {
     final response = await _connect.post(
