@@ -88,8 +88,8 @@ class InputDataScreen extends GetView<InputDataController> {
     return Column(
       children: [
         CustomTextField(
-          label: "Nomor KTP",
-          hint: "Masukkan nomor KTP",
+          label: "Nomor Kartu",
+          hint: "Masukkan nomor Kartu",
           inputType: TextInputType.number,
           controller: controller.ktpController,
           customValidator: true,
@@ -146,6 +146,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifInacbgController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 20),
         CustomTextField(
@@ -154,6 +155,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifRsController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 20),
         CustomTextField(
@@ -162,6 +164,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifNonbedahController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -170,6 +173,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifBedahController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -178,6 +182,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifKonsultasiController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -186,6 +191,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifTenagaAhliController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -194,6 +200,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifKeperawatanController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -202,6 +209,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifPenunjangController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -210,6 +218,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifRadiologiController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -218,6 +227,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifLabController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -226,6 +236,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifDarahController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -234,6 +245,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifRehabController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -242,6 +254,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifKamarAkomodasiController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -250,6 +263,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifRawatIntensifController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -258,6 +272,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifObatController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -266,6 +281,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifAlkesController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -274,6 +290,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifBMHPController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -282,6 +299,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifSewaAlatController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -290,6 +308,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifObatKronisController,
           customValidator: true,
+          isCurrency: true,
         ),
         const SizedBox(height: 15),
         CustomTextField(
@@ -298,6 +317,7 @@ class InputDataScreen extends GetView<InputDataController> {
           inputType: TextInputType.number,
           controller: controller.tarifObatKemoController,
           customValidator: true,
+          isCurrency: true,
         ),
       ],
     );

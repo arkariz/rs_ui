@@ -1,16 +1,18 @@
+import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:rs_ui/widget/custom_text.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({
+  CustomTextField({
     super.key,
     this.label,
     this.inputType = TextInputType.text,
     required this.hint,
     required this.controller,
     this.customValidator,
+    this.isCurrency = false,
   });
 
   final String? label;
@@ -18,6 +20,12 @@ class CustomTextField extends StatelessWidget {
   final String hint;
   final TextEditingController controller;
   final bool? customValidator;
+  final bool isCurrency;
+  final formatter = CurrencyTextInputFormatter(
+    locale: 'id',
+    decimalDigits: 0,
+    symbol: 'Rp. ',
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +37,16 @@ class CustomTextField extends StatelessWidget {
         TextFormField(
           keyboardType: inputType,
           inputFormatters: inputType == TextInputType.number
-              ? <TextInputFormatter>[
-                  FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
-                  FilteringTextInputFormatter.digitsOnly
-                ]
+              ? isCurrency == true
+                  ? <TextInputFormatter>[
+                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      FilteringTextInputFormatter.digitsOnly,
+                      formatter
+                    ]
+                  : <TextInputFormatter>[
+                      FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                      FilteringTextInputFormatter.digitsOnly,
+                    ]
               : null,
           decoration: InputDecoration(
             hintText: hint,
@@ -70,7 +84,9 @@ class CustomTextField extends StatelessWidget {
             }
           }),
           onChanged: (value) {
-            controller.text = value;
+            controller.text = isCurrency == true
+                ? formatter.getUnformattedValue().toString()
+                : value;
           },
         )
       ],
