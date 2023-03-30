@@ -43,6 +43,8 @@ class PrediksiLamaRawatScreen extends GetView<PrediksiLamaRawatController> {
                     children: [
                       diagnosisForm(),
                       const SizedBox(height: 20),
+                      tindakanForm(),
+                      const SizedBox(height: 20),
                       biodataForm(size),
                       SizedBox(
                         height: 45,
@@ -89,6 +91,34 @@ class PrediksiLamaRawatScreen extends GetView<PrediksiLamaRawatController> {
         CustomTextField(
           hint: "Masukkan kode diagnosis sekunder 3 (Opsional)",
           controller: controller.diagnosisSekunder3Controller,
+        ),
+      ],
+    );
+  }
+
+  Widget tindakanForm() {
+    return Column(
+      children: [
+        CustomTextField(
+          label: "Tindakan Primer",
+          hint: "Masukkan kode tindakan primer",
+          controller: controller.tindakanPrimerController,
+        ),
+        const SizedBox(height: 20),
+        CustomTextField(
+          label: "Tindakan Sekunder",
+          hint: "Masukkan kode tindakan sekunder 1 (Opsional)",
+          controller: controller.tindakanSekunder1Controller,
+        ),
+        const SizedBox(height: 15),
+        CustomTextField(
+          hint: "Masukkan kode tindakan sekunder 2 (Opsional)",
+          controller: controller.tindakanSekunder2Controller,
+        ),
+        const SizedBox(height: 15),
+        CustomTextField(
+          hint: "Masukkan kode tindakan sekunder 3 (Opsional)",
+          controller: controller.tindakanSekunder3Controller,
         ),
       ],
     );

@@ -10,6 +10,10 @@ class PrediksiLamaRawatController extends GetxController {
   final diagnosisSekunder1Controller = TextEditingController();
   final diagnosisSekunder2Controller = TextEditingController();
   final diagnosisSekunder3Controller = TextEditingController();
+  final tindakanPrimerController = TextEditingController();
+  final tindakanSekunder1Controller = TextEditingController();
+  final tindakanSekunder2Controller = TextEditingController();
+  final tindakanSekunder3Controller = TextEditingController();
   final umur = TextEditingController();
   final kelaminController = TextEditingController();
 
@@ -65,6 +69,20 @@ class PrediksiLamaRawatController extends GetxController {
         diagnosisSekunder3Controller.text.isEmpty
             ? "-"
             : diagnosisSekunder3Controller.text,
+      ],
+      "tindakan": [
+        tindakanPrimerController.text.isEmpty
+            ? "-"
+            : tindakanPrimerController.text,
+        tindakanSekunder1Controller.text.isEmpty
+            ? "-"
+            : tindakanSekunder1Controller.text,
+        tindakanSekunder2Controller.text.isEmpty
+            ? "-"
+            : tindakanSekunder2Controller.text,
+        tindakanSekunder3Controller.text.isEmpty
+            ? "-"
+            : tindakanSekunder3Controller.text,
       ],
       "sex": int.parse(kelaminController.text),
       "umur": int.parse(umur.text),
