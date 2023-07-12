@@ -18,7 +18,22 @@ class InputDataScreen extends GetView<InputDataController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            h1(text: "Input Data"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                h1(text: "Input Data"),
+                SizedBox(
+                  height: 45,
+                  width: 150,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      controller.createModel();
+                    },
+                    child: Text("Perbarui Model"),
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 20),
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),

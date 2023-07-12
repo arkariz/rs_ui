@@ -71,6 +71,15 @@ class InputDataController extends GetxController {
     }
   }
 
+  createModel() async {
+    loading.isLoading = true;
+    final result = await repo.createModel();
+    if (result != null){
+      showDialogCreateModel(result[0], result[1]);
+    }
+    loading.isLoading = false;
+  }
+
   onSelectedGender(String gender) {
     if (gender == "Laki-kai") {
       kelaminController.text = "1";
@@ -174,6 +183,40 @@ class InputDataController extends GetxController {
         Icons.check_circle_outline,
         color: Colors.green,
         size: 70,
+      ),
+      confirm: SizedBox(
+        width: 250,
+        child: ElevatedButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: Text("Ok"),
+        ),
+      ),
+    );
+  }
+
+  showDialogCreateModel(String akurasi, String mse) {
+    Get.defaultDialog(
+      title: "Hasil",
+      contentPadding: const EdgeInsets.all(24),
+      content: Row(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              h4(text: "Akurasi"),
+              h4(text: "Mean Squared Error "),
+            ],
+          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              h4(text: ": $akurasi %"),
+              h4(text: ": $mse"),
+            ],
+          ),
+        ],
       ),
       confirm: SizedBox(
         width: 250,

@@ -19,4 +19,20 @@ class InputDataRepository {
       return null;
     }
   }
+
+  Future<List<String>?> createModel() async {
+    final response = await _connect.get(
+      "http://localhost:8080/create-model",
+    );
+    if (response.isOk) {
+      return [
+        double.parse(response.body['ape'].toString()).toStringAsFixed(1),
+        double.parse(response.body['mse'].toString()).toStringAsFixed(3),
+      ];
+    } else {
+      SnackBarUtil.showFlushBarError(
+          Get.context!, "Terjadi kesalahan pada sistem");
+      return null;
+    }
+  }
 }
