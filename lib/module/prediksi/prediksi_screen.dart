@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:rs_ui/helper/size_config.dart';
 import 'package:rs_ui/module/prediksi/prediksi_controller.dart';
+import 'package:rs_ui/widget/custom_dropdown.dart';
 import 'package:rs_ui/widget/custom_text.dart';
 import 'package:rs_ui/widget/custom_text_field.dart';
 
@@ -43,6 +44,14 @@ class PrediksiScreen extends GetView<PrediksiController> {
                         const SizedBox(width: 30),
                         tindakanForm(),
                       ],
+                    ),
+                    const SizedBox(height: 30),
+                    CustomDropdown(
+                      size: MediaQuery.of(context).size,
+                      menuItems: controller.listKelasRawat,
+                      onChangeValue: controller.onSelectedKelasRawat,
+                      label: "Kelas Rawat",
+                      hint: "Pilih kelas rawat",
                     ),
                     const SizedBox(height: 30),
                     specialForm(),

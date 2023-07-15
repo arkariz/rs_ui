@@ -15,6 +15,7 @@ class PrediksiController extends GetxController {
   final tindakanSekunder1Controller = TextEditingController();
   final tindakanSekunder2Controller = TextEditingController();
   final tindakanSekunder3Controller = TextEditingController();
+  final kelasRawat = TextEditingController();
   final subacuteController = TextEditingController();
   final chronicController = TextEditingController();
   final spController = TextEditingController();
@@ -30,6 +31,8 @@ class PrediksiController extends GetxController {
 
   final repo = PrediksiRepository();
   final loading = Get.find<LoadingController>();
+
+  final listKelasRawat = ["1", "2", "3"];
 
   prediksi() async {
     loading.isLoading = true;
@@ -48,6 +51,10 @@ class PrediksiController extends GetxController {
       showDialog();
     }
     loading.isLoading = false;
+  }
+
+  onSelectedKelasRawat(String kelas) {
+    kelasRawat.text = kelas;
   }
 
   createRequestBody() {
@@ -78,6 +85,7 @@ class PrediksiController extends GetxController {
             ? "-"
             : tindakanSekunder3Controller.text,
       ],
+      "kelasrawat": int.parse(kelasRawat.text),
       "subacute":
           subacuteController.text.isEmpty ? "-" : subacuteController.text,
       "chronic": chronicController.text.isEmpty ? "-" : chronicController.text,

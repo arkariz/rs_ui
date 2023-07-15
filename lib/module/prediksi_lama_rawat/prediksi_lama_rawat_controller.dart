@@ -14,6 +14,7 @@ class PrediksiLamaRawatController extends GetxController {
   final tindakanSekunder1Controller = TextEditingController();
   final tindakanSekunder2Controller = TextEditingController();
   final tindakanSekunder3Controller = TextEditingController();
+  final kelasRawat = TextEditingController();
   final umur = TextEditingController();
   final kelaminController = TextEditingController();
 
@@ -23,6 +24,7 @@ class PrediksiLamaRawatController extends GetxController {
   final tarifInacbg = "".obs;
   final isLoading = false.obs;
   final genderList = ["Laki-laki", "Perempuan"];
+  final kelasList = ["1", "2", "3"];
 
   final keyForm = GlobalKey<FormState>();
   final repo = PrediksiLamaRawatRepository();
@@ -46,6 +48,10 @@ class PrediksiLamaRawatController extends GetxController {
       }
       loading.isLoading = false;
     }
+  }
+
+  onSelectedKelas(String kelas) {
+    kelasRawat.text = kelas;
   }
 
   onSelectedGender(String gender) {
@@ -84,6 +90,7 @@ class PrediksiLamaRawatController extends GetxController {
             ? "-"
             : tindakanSekunder3Controller.text,
       ],
+      "kelasrawat": int.parse(kelasRawat.text),
       "sex": int.parse(kelaminController.text),
       "umur": int.parse(umur.text),
     };

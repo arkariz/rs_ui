@@ -142,6 +142,13 @@ class PrediksiLamaRawatScreen extends GetView<PrediksiLamaRawatController> {
           label: "Jenis Kelamin",
           hint: "Pilih jenis kelamin",
         ),
+        CustomDropdown(
+          size: size,
+          menuItems: controller.kelasList,
+          onChangeValue: controller.onSelectedKelas,
+          label: "Kelas Rawat",
+          hint: "Pilih kelas rawat",
+        ),
       ],
     );
   }
