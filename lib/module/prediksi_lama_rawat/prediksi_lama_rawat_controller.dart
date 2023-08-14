@@ -14,7 +14,8 @@ class PrediksiLamaRawatController extends GetxController {
   final tindakanSekunder1Controller = TextEditingController();
   final tindakanSekunder2Controller = TextEditingController();
   final tindakanSekunder3Controller = TextEditingController();
-  final kelasRawat = TextEditingController();
+  final hari = TextEditingController();
+  final severity = TextEditingController();
   final umur = TextEditingController();
   final kelaminController = TextEditingController();
 
@@ -24,7 +25,8 @@ class PrediksiLamaRawatController extends GetxController {
   final tarifInacbg = "".obs;
   final isLoading = false.obs;
   final genderList = ["Laki-laki", "Perempuan"];
-  final kelasList = ["1", "2", "3"];
+  final hariList = ["Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu", "Minggu"];
+  final severityList = ["1", "2", "3"];
 
   final keyForm = GlobalKey<FormState>();
   final repo = PrediksiLamaRawatRepository();
@@ -50,8 +52,22 @@ class PrediksiLamaRawatController extends GetxController {
     }
   }
 
-  onSelectedKelas(String kelas) {
-    kelasRawat.text = kelas;
+  onSelectedHari(String selectedHari) {
+    if(selectedHari == "Kamis"){
+      hari.text = "0";
+    } else if(selectedHari == "Rabu"){
+      hari.text = "1";
+    } else if (selectedHari == "Selasa"){
+      hari.text = "2";
+    } else if(selectedHari == "Sabtu"){
+      hari.text = "3";
+    } else if(selectedHari == "Jumat"){
+      hari.text = "4";
+    } else if(selectedHari == "Senin"){
+      hari.text = "5";
+    } else{
+      hari.text = "6";
+    }
   }
 
   onSelectedGender(String gender) {
@@ -60,6 +76,10 @@ class PrediksiLamaRawatController extends GetxController {
     } else {
       kelaminController.text = "2";
     }
+  }
+
+  onSelectedSeverity(String selectedSeverity) {
+    severity.text = selectedSeverity;
   }
 
   createRequestBody() {
@@ -90,9 +110,10 @@ class PrediksiLamaRawatController extends GetxController {
             ? "-"
             : tindakanSekunder3Controller.text,
       ],
-      "kelasrawat": int.parse(kelasRawat.text),
+      "hari": int.parse(hari.text),
       "sex": int.parse(kelaminController.text),
       "umur": int.parse(umur.text),
+      "severity": int.parse(severity.text),
     };
 
     return request;

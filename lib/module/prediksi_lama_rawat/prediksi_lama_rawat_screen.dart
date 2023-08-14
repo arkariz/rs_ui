@@ -144,10 +144,17 @@ class PrediksiLamaRawatScreen extends GetView<PrediksiLamaRawatController> {
         ),
         CustomDropdown(
           size: size,
-          menuItems: controller.kelasList,
-          onChangeValue: controller.onSelectedKelas,
-          label: "Kelas Rawat",
-          hint: "Pilih kelas rawat",
+          menuItems: controller.hariList,
+          onChangeValue: controller.onSelectedHari,
+          label: "Hari Masuk Pasien",
+          hint: "Pilih hari",
+        ),
+        CustomDropdown(
+          size: size,
+          menuItems: controller.severityList,
+          onChangeValue: controller.onSelectedSeverity,
+          label: "Severity Level",
+          hint: "Pilih severity level",
         ),
       ],
     );
