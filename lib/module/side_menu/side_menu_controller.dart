@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-enum Screen { prediksi, inputData, prediksiLamaRawat }
+enum Screen { prediksi, inputData, prediksiLamaRawat, home }
 
 class SideMenuController extends GetxController {
-  final currentScreen = Screen.prediksi.obs;
+  final currentScreen = Screen.home.obs;
 }

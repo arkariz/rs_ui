@@ -4,6 +4,7 @@ import 'package:rs_ui/helper/size_config.dart';
 import 'package:rs_ui/module/input_data/input_data_screen.dart';
 import 'package:rs_ui/module/prediksi/prediksi_screen.dart';
 import 'package:rs_ui/module/prediksi_lama_rawat/prediksi_lama_rawat_screen.dart';
+import 'package:rs_ui/module/side_menu/home_screen.dart';
 import 'package:rs_ui/module/side_menu/side_menu_controller.dart';
 import 'package:rs_ui/widget/loading/base_widget.dart';
 import 'package:window_manager/window_manager.dart';
@@ -56,7 +57,9 @@ class SideMenu extends GetView<SideMenuController> with WindowListener {
     return Obx(
       () => Flexible(
         flex: 5,
-        child: controller.currentScreen.value == Screen.prediksi
+        child: controller.currentScreen.value == Screen.home
+          ? const HomeScreen()
+          : controller.currentScreen.value == Screen.prediksi
             ? const PrediksiScreen()
             : controller.currentScreen.value == Screen.inputData
                 ? const InputDataScreen()
@@ -92,9 +95,9 @@ class SideMenu extends GetView<SideMenuController> with WindowListener {
                       color: Colors.blue,
                     ),
                     Text(
-                      "Health Care",
+                      "Health Care Prediction",
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 18,
                         color: Colors.blue,
                       ),
                     )
@@ -102,15 +105,15 @@ class SideMenu extends GetView<SideMenuController> with WindowListener {
                 ),
                 const SizedBox(height: 30),
                 sideMenuItem(
-                  Icons.switch_access_shortcut_add_outlined,
-                  "Prediksi Tarif",
-                  Screen.prediksi,
-                ),
-                const SizedBox(height: 10),
-                sideMenuItem(
                   Icons.watch_later_outlined,
                   "Prediksi Lama Rawat",
                   Screen.prediksiLamaRawat,
+                ),
+                const SizedBox(height: 10),
+                sideMenuItem(
+                  Icons.switch_access_shortcut_add_outlined,
+                  "Prediksi Tarif",
+                  Screen.prediksi,
                 ),
                 const SizedBox(height: 10),
                 sideMenuItem(
@@ -130,7 +133,9 @@ class SideMenu extends GetView<SideMenuController> with WindowListener {
         controller.currentScreen(screen);
       },
       child: Obx(() {
-        var isActive = controller.currentScreen.value == screen ? true : false;
+        var isActive = controller.currentScreen.value == Screen.home
+          ? false 
+          : controller.currentScreen.value == screen ? true : false;
 
         return Row(
           children: [
